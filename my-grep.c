@@ -35,7 +35,7 @@ int main(int argc, const char* argv[]) {
         }
         exit(0);
 
-    } else if (argc > 2) {
+    } else if (argc > 2) { /*ainakin yksi tiedosto*/
         
         /*jos haettu termi on tyhjä ei löydetä mitää*/
         if (!strcmp(argv[1],"\0")) {
