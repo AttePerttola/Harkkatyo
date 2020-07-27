@@ -14,10 +14,10 @@ int main(int argc, const char* argv[]) {
     int filecounter = 2;
     int counter = 0;
 
-    if (argc == 1) {
+    if (argc == 1) { /*ei hakutermiä tai tiedostoja*/
         printf("my-grep: searchterm [file...]\n");
         exit(1);
-    } else if (argc == 2) {
+    } else if (argc == 2) { /*pelkkä hakutermi, ei tiedostoja*/
         /*jos haettu termi on tyhjä ei löydetä mitää*/
         if (!strcmp(argv[1],"\0")) {
             printf("my-grep: No matches found.\n");
@@ -53,7 +53,7 @@ int main(int argc, const char* argv[]) {
             /*luetaan tiedostoa rivi kerrallaan*/
             while((nread = getline(&line,&len,fp)) != -1) {
                 
-                if (strstr(line,argv[1]) != NULL) { // vertaillaan annettua termiä ja käsiteltävää riviä
+                if (strstr(line,argv[1]) != NULL) { /* vertaillaan annettua termiä ja käsiteltävää riviä*/
                     fwrite(line, nread, 1, stdout);
                     counter++;
                     
@@ -64,9 +64,7 @@ int main(int argc, const char* argv[]) {
             fclose(fp);
             filecounter++;
         }
-        /*if (counter != 0) {
-                printf("\n");
-            }*/
+        /*jos ei löydetty termiä vastaavaa mistään tiedostosta*/
         if (counter == 0) {
             printf("my-grep: No matches found.\n");
         }
